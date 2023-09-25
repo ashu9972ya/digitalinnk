@@ -23,7 +23,7 @@ const Basket = () => {
       Cheese: { buy: 1, get: 1 },
       Soup: {},
       Bread: { discount: 0.5, limit: 1 }, // Half price for one Bread when Soup is in the basket
-      Butter: { discount: 0.33 }, // 33% off
+      Butter: { discount: 0.665 }, // 33% off
     };
 
     let savings = 0;

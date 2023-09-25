@@ -30,14 +30,20 @@ const basketSlice = createSlice({
         existingItem.quantity += 1;
       }
     },
+    
     decreaseQuantity: (state, action) => {
       const itemIdToDecrease = action.payload.id;
-      const existingItem = state.items.find(
+      const existingItemIndex = state.items.findIndex(
         (item) => item.id === itemIdToDecrease
       );
 
-      if (existingItem && existingItem.quantity > 1) {
-        existingItem.quantity -= 1;
+      if (existingItemIndex !== -1) {
+        if (state.items[existingItemIndex].quantity > 1) {
+          state.items[existingItemIndex].quantity -= 1;
+        } else {
+          // Remove the item from the basket when quantity reaches 0
+          state.items.splice(existingItemIndex, 1);
+        }
       }
     },
   },
